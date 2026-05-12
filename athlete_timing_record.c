@@ -34,7 +34,7 @@ int main(){
     printf("Enter the number of athletes: ");
     scanf("%d", &num);
     if(num > max){
-        printf("INVAILD!, maximium input");
+        printf("INVALID! more than maximium input");
         return 1;
     }
 
