@@ -62,7 +62,5 @@ int main()
     sorting(timeTaken, num, choice);
     printArray(timeTaken, num);
 
-    printf("...");
-
     return 0;
 }
