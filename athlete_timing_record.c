@@ -1,46 +1,56 @@
 #include <stdio.h>
 
-double sorting(double arr[], int n, int choice){
-    for(int i = 0; i < n - 1; i++) {
-        for(int j = 0; j < n - i - 1; j++) {
-            if(choice == 1 && arr[j] > arr[j + 1]){
+double sorting(double arr[], const int n, const int choice)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (choice == 1 && arr[j] > arr[j + 1])
+            {
                 double temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
-            if(choice == 2 && arr[j] < arr[j + 1]){
+            if (choice == 2 && arr[j] < arr[j + 1])
+            {
                 double temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
         }
-   }
+    }
 }
-void printArray(double arr[], int n){
+void printArray(const double arr[], const int n)
+{
     printf("{");
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++)
+    {
         printf("%.2lf ", arr[i]);
     }
     printf("}");
 }
 
-int main(){
-    int num;  //Numbers of Athletes
-    int max = 100;
+int main()
+{
+    int num; // Numbers of Athletes
+    const int max = 100;
     double timeTaken[max];
     int choice;
 
-    //number of athletes
+    // number of athletes
     printf("Enter the number of athletes: ");
     scanf("%d", &num);
-    if(num > max){
+    if (num > max)
+    {
         printf("INVALID! more than maximium input");
         return 1;
     }
 
-    //Collection of athletes' time
-    for(int i = 0; i < num; i++){
-        printf("Athlete %d: ", i+1);
+    // Collection of athletes' time
+    for (int i = 0; i < num; i++)
+    {
+        printf("Athlete %d: ", i + 1);
         scanf("%lf", &timeTaken[i]);
     }
     printf("Enter the number of your choice:\n");
