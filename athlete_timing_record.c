@@ -1,5 +1,29 @@
 #include <stdio.h>
 
+double sorting(double arr[], int n, int choice){
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(choice == 1 && arr[j] > arr[j + 1]){
+                double temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+            if(choice == 2 && arr[j] < arr[j + 1]){
+                double temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+   }
+}
+void printArray(double arr[], int n){
+    printf("{");
+    for (int i = 0; i < n; i++){
+        printf("%.2lf ", arr[i]);
+    }
+    printf("}");
+}
+
 int main(){
     int num;  //Numbers of Athletes
     int max = 100;
@@ -11,55 +35,23 @@ int main(){
     scanf("%d", &num);
     if(num > max){
         printf("INVAILD!, maximium input");
+        return 1;
     }
-    else{
-        //Collection of athletes' time
-        for(int i = 0; i < num; i++){
-            printf("Athlete %d: ", i+1);
-            scanf("%lf", &timeTaken[i]);
-        }
+
+    //Collection of athletes' time
+    for(int i = 0; i < num; i++){
+        printf("Athlete %d: ", i+1);
+        scanf("%lf", &timeTaken[i]);
     }
     printf("Enter the number of your choice:\n");
     printf("1 - Ascending\n");
     printf("2 - Descending\n");
     printf("Your choice: ");
     scanf("%d", &choice);
-    switch(choice){
-        case 1:
-            for (int i = 0; i < num - 1; i++) {
-                for (int j = 0; j < num - i - 1; j++) {
-                    if (timeTaken[j] > timeTaken[j + 1]) {
-                        double temp = timeTaken[j];
-                        timeTaken[j] = timeTaken[j + 1];
-                        timeTaken[j + 1] = temp;
-                    }
-                }
-            }
-            printf("{");
-            for(int i = 0; i < num; i++){
-                printf("%.2lf ", timeTaken[i]);
-            }
-            printf("}");
-            break;
-        case 2:
-            for (int i = 0; i < num - 1; i++) {
-                for (int j = 0; j < num - i - 1; j++) {
-                    if (timeTaken[j] < timeTaken[j + 1]) {
-                        double temp = timeTaken[j];
-                        timeTaken[j] = timeTaken[j + 1];
-                        timeTaken[j + 1] = temp;
-                    }
-                }
-            }
-            printf("{");
-            for(int i = 0; i < num; i++){
-                printf("%.2lf ", timeTaken[i]);
-            }
-            printf("}");
-            break;
-        default:
-            printf("INVAILD CHOICE!!!");
-    }
+
+    sorting(timeTaken, num, choice);
+    printArray(timeTaken, num);
+
     printf("...");
 
     return 0;
